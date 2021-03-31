@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  bankdb:
+    image: postgres:alpine
+    ports:
+      - 5532:5432
+    volumes:
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+    env_file:
+      - .env

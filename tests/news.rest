@@ -1,0 +1,27 @@
+### Получаем свежие новости
+
+GET http://localhost:9999/api/news/latest
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.contentType.mimeType === "application/json", "Expected 'application/json' but received '" + response.contentType.mimeType + "'");
+});
+%}
+
+### Создаем новую новость
+
+POST http://localhost:9999/api/news
+Content-Type: application/json
+
+{
+  "title": "test",
+  "text": "very long text",
+  "image": "https://..."
+}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+});
+%}
